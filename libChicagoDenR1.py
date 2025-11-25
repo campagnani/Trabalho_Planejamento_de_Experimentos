@@ -617,9 +617,17 @@ class ChigagoDenR1:
         print("################################################")
         print("########### Definição da Simulação  ############")
         print("################################################")
-        # Volume calculation
 
         self.settings = openmc.Settings()
+        # Volume calculation
+        #entropy_mesh = openmc.Mesh()
+        #lower_left = (-5.2577E+01, -5.7310E+01, -7.7348E+01)  # (x, y, z)
+        #upper_right = (5.2598E+01, 5.7304E+01, 7.7401E+01)    # (x, y, z)
+        #entropy_mesh.lower_left = lower_left
+        #entropy_mesh.upper_right = upper_right
+        #entropy_mesh.dimension = (17, 17, 17)    
+        #self.settings.entropy_mesh = entropy_mesh
+        self.settings.temperature={"method":"interpolation"}
         self.settings.particles = particulas
         self.settings.batches = ciclos
         self.settings.create_delayed_neutrons = atrasados
