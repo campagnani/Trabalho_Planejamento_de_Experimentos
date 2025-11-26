@@ -14,7 +14,7 @@ libChicagoDenR1.simu = True
 
 m = branch_calculations.matriz_real #apenas para simplificar
 
-chicago = libChicagoDenR1.ChigagoDenR1(altura_fonte=None, particulas=100000, ciclos=220, inativo=20)
+chicago = libChicagoDenR1.ChigagoDenR1(altura_fonte=None, particulas=1200, ciclos=220, inativo=20)
 #teste manual
 #chicago.u_nat(enriquecimento=1.11,tempCombustivel=273+50, densidadeCombustivel=18, tempModerador=273+50, densidadeModerador=0.95)
 #chicago.run()
