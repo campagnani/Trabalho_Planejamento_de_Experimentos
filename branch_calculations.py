@@ -1,7 +1,11 @@
+# Fatores do SEALER
+fatores_0_sealer =    [ 12, 273+520,  18.5, 273+520, 10]
+fatores_coef_sealer = [0.1,     500,   0.5,     500,  1]
 
-fatores_0 =    [1.10, 273+520,  20, 273+50, 0.90]
+# Fatores da SubCrítica
+fatores_0_subcritica =    [1.10, 273+520,  20, 273+50, 0.90]
+fatores_coef_subcritica = [0.04,     500,   2,     50, 0.09]
 
-fatores_coef = [0.04,     500,   2,     50, 0.09]
 
 matriz_planejamento_2k = [
    [ 0,  0,  0,  0,  0],
@@ -61,4 +65,5 @@ def conv_matriz_real(matriz_orig, fatores_0, fatores_coef):
 
     return matriz_real
 
-matriz_real = conv_matriz_real(matriz_planejamento_2k,fatores_0,fatores_coef)
+matriz_real_subcritica        = conv_matriz_real(matriz_planejamento_2k,fatores_0_subcritica,fatores_coef_subcritica)
+matriz_real_sealer            = conv_matriz_real(matriz_planejamento_2k,fatores_0_sealer,fatores_coef_sealer)
