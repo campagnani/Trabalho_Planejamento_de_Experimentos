@@ -14,17 +14,20 @@ import numpy as np
 #import resultados_experimentos_10000_100_10 as r
 #import resultados_experimentos_10000_220_20 as r
 
-import resultados_experimentos_1200_220_20_2 as r
-
+import results_sealer_20251202_011203.resultados_experimentos__12_793_18p5_793_10___0p1_500_0p5_500_1___1200_120_20_ as r
+import results_sealer_20251202_014127.resultados_experimentos__12_1273_18p5_1273_10___0p2_1000_0p5_1000_1p5___1200_140_40_ as r
+import results_sealer_20251202_020816.resultados_experimentos__12_1273_18p5_1273_10___0p2_1000_0p5_1000_1p5___50000_50_10_ as r
+import results_sealer_20251202_054041.resultados_experimentos__12_1273_18P5_1273_10___0P1_500_0P25_500_0P75___50000_50_10_ as r
 
 reat = []
+media = (r.vetor_keff[0]+r.vetor_keff[1]+r.vetor_keff[2]+r.vetor_keff[3])/4
 for i in range(len(r.vetor_keff)):
-        reat.append((r.vetor_keff[i]-r.vetor_keff[0])*10**5)
+        reat.append((r.vetor_keff[i]-media)*10**5)
 
 # Create DataFrame
 # Columns: F1, F2, F3, F4, F5
 df = pd.DataFrame(r.matriz_planejamento_2k, columns=['F1', 'F2', 'F3', 'F4', 'F5'])
-df['Reatividade'] = r.vetor_keff#reat
+df['Reatividade'] = reat
 
 # Define Factor Labels
 factor_labels = ["Enriquecimento (%)", "Temp Comb (°C)", "Dens Comb (g/cm³)", "Temp Mod (°C)", "Dens Mod (g/cm³)"]

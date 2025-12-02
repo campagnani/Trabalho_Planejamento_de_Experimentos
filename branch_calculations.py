@@ -1,6 +1,6 @@
 # Fatores do SEALER
-fatores_0_sealer =    [ 12, 273+520,  18.5, 273+520, 10]
-fatores_coef_sealer = [0.1,     500,   0.5,     500,  1]
+fatores_0_sealer =    [ 12, 273+1000,  18.5, 273+1000,  10]
+fatores_coef_sealer = [0.1,      500,  0.25,     500, 0.75]
 
 # Fatores da SubCrítica
 fatores_0_subcritica =    [1.10, 273+520,  20, 273+50, 0.90]

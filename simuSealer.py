@@ -8,15 +8,15 @@
 
 import pprint
 import branch_calculations
-
+import os
 import libOpenSealer
 
 m = branch_calculations.matriz_real_sealer #apenas para simplificar
 
 
 
-
-sealer = libOpenSealer.SealerArctic(particulas=2800,ciclos=240,inativo=40,atrasados=True)
+libOpenSealer.dir("results_sealer")
+sealer = libOpenSealer.SealerArctic(particulas=50000,ciclos=440,inativo=40,atrasados=True)
 #sealer.materiais(
 #    enriquecimento=12,
 #    tempComb=273+520, 
@@ -42,16 +42,23 @@ for i in range(0, len(m)):
             tempRefri=m[i][3], 
             densidadeRefrigerante=m[i][4])
     sealer.geometria()
+    sealer.settings.seed=i+1
+    sealer.settings.export_to_xml()
     sealer.run()
-    sp = libOpenSealer.openmc.StatePoint(f"statepoint.{sealer.settings.batches}.h5")
+    os.rename(f"statepoint.{sealer.settings.batches}.h5", f"statepoint.{i}.h5")
+
+#Gerar vetor keff
+for i in range(0, len(m)):
+    sp = libOpenSealer.openmc.StatePoint(f"statepoint.{i}.h5")
     vetor_keff.append(sp.keff.n)
     vetor_keff_incerteza.append(sp.keff.s)
     sp.close()
 
 
+
 #Escrever resultados no arquivo
 config = [sealer.settings.particles, sealer.settings.batches, sealer.settings.inactive]
-with open(f"resultados_experimentos_{branch_calculations.fatores_0}_{branch_calculations.fatores_coef}_{config}.py", "w") as f:
+with open(f"resultados_experimentos_{branch_calculations.fatores_0_sealer}_{branch_calculations.fatores_coef_sealer}_{config}.py", "w") as f:
     f.write("# Resultados da Simulação OpenMC\n")
     f.write("# Arquivo gerado automaticamente\n\n")
     

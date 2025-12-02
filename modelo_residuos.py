@@ -11,30 +11,29 @@ from itertools import combinations
 #import resultados_experimentos_10000_100_10 as r
 #import resultados_experimentos_1000_220_20 as r
 #import resultados_experimentos_10000_220_20_2 as r
-import resultados_experimentos_1200_220_20 as r
+#import resultados_experimentos_1200_220_20 as r
 
 
 #import resultados_experimentos_10000_220_20 as r
 #import resultados_experimentos_100000_220_20 as r
 
-import resultados_experimentos_1200_220_20_2 as r
+#import resultados_experimentos_1200_220_20_2 as r
+import results_sealer_20251202_011203.resultados_experimentos__12_793_18p5_793_10___0p1_500_0p5_500_1___1200_120_20_ as r
+import results_sealer_20251202_014127.resultados_experimentos__12_1273_18p5_1273_10___0p2_1000_0p5_1000_1p5___1200_140_40_ as r
+import results_sealer_20251202_020816.resultados_experimentos__12_1273_18p5_1273_10___0p2_1000_0p5_1000_1p5___50000_50_10_ as r
+#import results_sealer_20251202_054041.resultados_experimentos__12_1273_18P5_1273_10___0P1_500_0P25_500_0P75___50000_50_10_ as r
 
 
 reat = []
+media = (r.vetor_keff[0]+r.vetor_keff[1]+r.vetor_keff[2]+r.vetor_keff[3])/4
 for i in range(len(r.vetor_keff)):
-        reat.append((r.vetor_keff[i]-r.vetor_keff[0])*10**5)
+        reat.append((r.vetor_keff[i]-media)*10**5)
 
-# 1. Ler e processar o arquivo de dados
-filename = 'resultados_experimentos_10000_220_20.py'
 
-with open(filename, 'r') as f:
-    content = f.read()
 
-local_vars = {}
-exec(content, {}, local_vars)
+vetor_keff = reat#r.vetor_keff 
+matriz = r.matriz_planejamento_2k
 
-vetor_keff = r.vetor_keff #local_vars['vetor_keff']
-matriz = local_vars['matriz_planejamento_2k']
 
 # Nomes dos fatores conforme sua descrição
 factor_names = ['Enriq', 'Temp1', 'Dens1', 'Temp2', 'Dens2']
